@@ -7,21 +7,15 @@ ext {
 }
 
 android {
-    compileSdkVersion project.Mesibo_compileSdkVersion
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "org.mesibo.messenger"
         minSdkVersion 21
-        targetSdkVersion project.Mesibo_targetSdkVersion
-        versionCode project.PUBLISH_VERSION_CODE
-        versionName project.PUBLISH_VERSION
-        buildConfigField "String", "BUILD_VERSION", "\"${project.PUBLISH_VERSION}\""
-        buildConfigField "String", "BUILD_TYPE", "\"DEBUG\""
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-    }
-
-    lintOptions {
-        disable 'MissingTranslation'
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -51,8 +45,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project.Mesibo_messagingUi
-    implementation project.Mesibo_callUi
+    implementation "com.mesibo.api:mesibo:${project.MesiboVersion_Api}"
+    implementation "com.mesibo.api:ui:${project.MesiboVersion_Ui}"
+    implementation "com.mesibo.api:calls:${project.MesiboVersion_Calls}"
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
 }
